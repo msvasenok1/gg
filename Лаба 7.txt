@@ -1,0 +1,52 @@
+7.1
+def input_vector(vector_number):
+    while True:
+        try:
+            user_input = input(f"Введите элементы вектора {vector_number} через пробел: ")
+            vector = list(map(float, user_input.split()))
+            return vector
+        except ValueError:
+            print("Неверный ввод. Пожалуйста, введите числа, разделенные пробелами.")
+
+def scalar_product(vector1, vector2):
+    return sum(a * b for a, b in zip(vector1, vector2))
+
+vector1 = input_vector(1)
+vector2 = input_vector(2)
+
+if len(vector1) != len(vector2):
+    print("Ошибка: вектора должны быть одинаковой размерности.")
+else:
+    result = scalar_product(vector1, vector2)
+    print(f"Скалярное произведение векторов: {result}")
+
+
+7.2
+
+
+6.2
+def get_input():
+    while True:
+        user_input = input("Введите строку: ")
+        if isinstance(user_input, str):
+            return user_input.strip()
+        else:
+            print("Неверный ввод. Пожалуйста, введите строку.")
+
+def format_string(s):
+    s = s.strip()  
+    s = s.lower()  
+    if len(s) > 0:
+        s = s[0].upper() + s[1:]  
+
+    while s.endswith(('...', '!', '?')):
+        s = s[:-1]
+
+    if not s.endswith('.'):  #
+        s += '.'
+
+    return s
+
+user_string = get_input()
+formatted_string = format_string(user_string)
+print("Обработанная строка:", formatted_string)
